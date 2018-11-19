@@ -1,0 +1,33 @@
+buildscript {
+    ext {
+        springBootVersion = '2.0.3.RELEASE'
+    }
+    repositories {
+        maven{ url 'http://172.16.11.252:8081/repository/maven-public/'}
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+    }
+}
+
+plugins { id 'io.franzbecker.gradle-lombok' version '1.14' }
+
+allprojects {
+    apply from: 'http://gitlab.heytea.com/Cheng/gradle/raw/master/build-base.gradle'
+    version = "${heyteaSaleVersion}"
+}
+
+subprojects {
+    version = "${heyteaSaleVersion}"
+    apply from: 'http://gitlab.heytea.com/Cheng/gradle/raw/master/build-deploy.gradle'
+}
+
+project(":sale-common-core"){
+    dependencyManagement {
+        imports {
+            //<!--jacksonJSR310规范-->
+            mavenBom "com.fasterxml.jackson.module:jackson-modules-java8:${jacksonModules}"
+        }
+    }
+}
+
