@@ -1,4 +1,4 @@
 rootProject.name = 'sale-common'
 include('sale-common-core')
 include('sale-common-security')
-include('sale-common-log')
+include('common-transaction')

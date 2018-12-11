@@ -1,0 +1,9 @@
+dependencies{
+    compile("com.codingapi:tx-client:${lcnVersion}"){
+        exclude group: "org.slf4j"
+    }
+    compile("com.codingapi:tx-plugins-db:${lcnVersion}"){
+        exclude group: "org.slf4j"
+    }
+    compileOnly("org.springframework.cloud:spring-cloud-starter-openfeign")
+}
